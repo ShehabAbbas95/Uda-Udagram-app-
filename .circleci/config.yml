@@ -1,0 +1,64 @@
+version: 2.1
+orbs:
+  # orgs contain basic recipes and reproducible actions (install node, aws, etc.)
+  node: circleci/node@5.0.0
+  aws-cli: circleci/aws-cli@2.1.0
+  aws-ecs: circleci/aws-ecs@2.2.1
+  browser-tools: circleci/browser-tools@1.2.4
+  # different jobs are calles later in the workflows sections
+jobs:
+  build:
+    docker:
+      # the base image can run most needed actions with orbs
+      - image: "cimg/base:stable"
+        environment:
+          - CHROME_BIN=/usr/bin/google-chrome
+    steps:
+      - node/install
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - aws-cli/setup
+      - checkout
+      # install dependencies in both apps
+      - run:
+          name: Install Front-End Dependencies
+          command: |
+              npm run frontend_dep:install
+      - run:
+          name: Front-End Lint
+          command: |
+              npm run frontend:lint
+      - run:
+          name: Front-End Test
+          command: |
+              npm run frontend:test
+      - run:
+          name: Install ng
+          command: |
+              npm run ng
+      - run:
+          name:  Downgrade typescript to 3.5.3
+          command: |
+              npm run frontend:downgrade
+      - run:
+          name: Front-End Build
+          command: |
+              npm run frontend:build
+      - run:
+          name: Install Back-End Dependencies
+          command: |
+             npm run backend_dep:install
+      - run:
+          name: Back-End Build
+          command: |
+             npm run backend:build
+      - run:
+          name: Front-End Deploy
+          command: |
+             npm run frontend:deploy
+      
+workflow:
+  - Install
+  - Build
+  - Deploy
+  - Run Server
