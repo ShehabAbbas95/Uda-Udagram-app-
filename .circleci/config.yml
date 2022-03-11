@@ -14,9 +14,12 @@ jobs:
         environment:
           - CHROME_BIN=/usr/bin/google-chrome
     steps:
+    # Install node 
       - node/install
+    # Install browser to pass the tests
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
+    # Install aws cli
       - aws-cli/setup
       - checkout
       # install dependencies in both apps
