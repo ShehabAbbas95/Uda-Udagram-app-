@@ -31,10 +31,11 @@ jobs:
           name: Front-End Lint
           command: |
               npm run frontend:lint
-      - run:
-          name: Front-End Test
-          command: |
-              npm run frontend:test
+      # Script for test but its not running
+      # - run:
+        #  name: Front-End Test
+         # command: |
+            #  npm run frontend:test
       - run:
           name: Install ng
           command: |

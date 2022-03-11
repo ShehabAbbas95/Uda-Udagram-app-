@@ -10,9 +10,5 @@
         "backend:build": "cd udagram-api  && npm run build",
         "frontend:deploy": "cd udagram-frontend  && npm run deploy",
         "backend:start": "node ."
-    },
-    "dependencies": {
-        "nvm": "^0.0.4",
-        "tslib": "^2.3.1"
     }
 }
