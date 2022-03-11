@@ -12,13 +12,13 @@ jobs:
       # the base image can run most needed actions with orbs
       - image: "cimg/base:stable"
         environment:
-          - CHROME_BIN=/usr/bin/google-chrome
+          #- CHROME_BIN=/usr/bin/google-chrome
     steps:
     # Install node 
       - node/install
     # Install browser to pass the tests
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
+      #- browser-tools/install-chrome
+      #- browser-tools/install-chromedriver
     # Install aws cli
       - aws-cli/setup
       - checkout
@@ -62,7 +62,7 @@ jobs:
              npm run frontend:deploy
       
 workflow:
-  - Install
-  - Build
+  - Install Node, AWS and NPM. 
+  - Test and Build the code.
   - Deploy
   - Run Server
