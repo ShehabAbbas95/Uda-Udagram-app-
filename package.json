@@ -6,7 +6,7 @@
         "frontend:lint": "cd udagram-frontend && npm run lint",
         "frontend:downgrade": "cd udagram-frontend && npm run downgrade",
         "frontend:build": "cd udagram-frontend && npm run build",
-        "backend_dep:install": "cd udagram-api && npm  install ",
+        "backend_dep:install": "cd backend && npm  install ",
         "backend:build": "cd backend  && npm run build",
         "frontend:deploy": "cd udagram-frontend  && npm run deploy",
         "backend:start": "node ."
