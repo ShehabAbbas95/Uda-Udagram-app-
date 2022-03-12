@@ -1,6 +1,8 @@
 node_modules
 .env
 .elasticbeanstalk
+backendd
+udagram-frontendddd
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

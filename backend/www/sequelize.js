@@ -8,7 +8,7 @@ exports.sequelize = new sequelize_typescript_1.Sequelize({
     password: config_1.config.password,
     database: config_1.config.database,
     host: config_1.config.host,
-    port: config_1.config.db_port,
+    port: config_1.config.dbPort,
     dialect: "postgres",
     storage: ":memory:",
 });
